@@ -8,11 +8,13 @@ import { chatRoutes } from "./routes/chat";
 import { doctorRoutes } from "./routes/doctors";
 import { notificationRoutes } from "./routes/notifications";
 import { progressRoutes } from "./routes/progress";
+import { startNotificationWorker } from "./services/queue";
 
 const app = Fastify({ logger: true });
 
 async function main() {
   await runMigrations();
+  startNotificationWorker();
 
   await app.register(cors, { origin: true });
   await app.register(multipart, { limits: { fileSize: 10 * 1024 * 1024 } });
