@@ -14,7 +14,7 @@ export async function* streamChatResponse(
   systemPrompt: string = SKIN_ANALYSIS_SYSTEM
 ): AsyncGenerator<string> {
   const stream = await client.messages.stream({
-    model: "claude-sonnet-4-6",
+    model: "claude-haiku-4-5-20251001",
     max_tokens: 2048,
     system: systemPrompt,
     messages: messages.map(m => ({ role: m.role, content: m.content })),
@@ -35,7 +35,7 @@ export async function* streamVisionResponse(
   systemPrompt: string = SKIN_ANALYSIS_SYSTEM
 ): AsyncGenerator<string> {
   const stream = await client.messages.stream({
-    model: "claude-sonnet-4-6",
+    model: "claude-haiku-4-5-20251001",
     max_tokens: 2048,
     system: systemPrompt,
     messages,
